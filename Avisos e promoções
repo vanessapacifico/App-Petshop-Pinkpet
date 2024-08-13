@@ -1,0 +1,35 @@
+import React, { useState } from 'react';
+import { View, Text, FlatList, Button } from 'react-native';
+
+const AvisoScreen = () => {
+  const [avisos, setAvisos] = useState([
+    { id: 1, titulo: 'Agendamento Confirmado', conteudo: 'Seu agendamento para amanhã foi confirmado.', lido: false },
+    { id: 2, titulo: 'Promoção de Ração', conteudo: 'Desconto de 10% em todas as rações.', lido: false },
+  ]);
+
+  const marcarComoLido = (id) => {
+    setAvisos(avisos.map(aviso => aviso.id === id ? { ...aviso, lido: true } : aviso));
+  };
+
+  const renderItem = ({ item }) => (
+    <View style={{ padding: 10, borderBottomWidth: 1 }}>
+      <Text style={{ fontWeight: 'bold' }}>{item.titulo}</Text>
+      <Text>{item.conteudo}</Text>
+      {!item.lido && (
+        <Button title="Marcar como lido" onPress={() => marcarComoLido(item.id)} />
+      )}
+    </View>
+  );
+
+  return (
+    <View>
+      <FlatList
+        data={avisos}
+        renderItem={renderItem}
+        keyExtractor={item => item.id.toString()}
+      />
+    </View>
+  );
+};
+
+export default AvisoScreen;
