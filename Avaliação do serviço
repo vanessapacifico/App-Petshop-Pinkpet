@@ -1,0 +1,34 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button } from 'react-native';
+import StarRating from 'react-native-star-rating'; // Exemplo de biblioteca para RatingBar
+
+const AvaliacaoScreen = () => {
+  const [rating, setRating] = useState(0);
+  const [comentario, setComentario] = useState('');
+
+  const enviarAvaliacao = () => {
+    // Enviar os dados para o servidor
+    console.log('Avaliação:', rating);
+    console.log('Comentário:', comentario);
+  };
+
+  return (
+    <View>
+      <Text>Como você avalia o nosso serviço?</Text>
+      <StarRating
+        maxStars={5}
+        rating={rating}
+        onStarChange={(rating) => setRating(rating)}
+      />
+      <TextInput
+        multiline
+        placeholder="Deixe seu comentário..."
+        value={comentario}
+        onChangeText={setComentario}
+      />
+      <Button title="Enviar Avaliação" onPress={enviarAvaliacao} />
+    </View>
+  );
+};
+
+export default AvaliacaoScreen;
