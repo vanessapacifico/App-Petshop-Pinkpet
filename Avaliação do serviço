@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import StarRating from 'react-native-star-rating'; // Exemplo de biblioteca para RatingBar
+import StarRating from 'react-native-star-rating'; // biblioteca a ser usada: RatingBar
 
 const AvaliacaoScreen = () => {
   const [rating, setRating] = useState(0);
