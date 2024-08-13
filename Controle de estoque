@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, FlatList } from 'react-native';
+
+const EstoqueScreen = () => {
+  const [produtos, setProdutos] = useState([]);
+  const [novoProduto, setNovoProduto] = useState('');
+  const [novaQuantidade, setNovaQuantidade] = useState('');
+
+  const adicionarProduto = () => {
+    setProdutos([...produtos, { nome: novoProduto, quantidade: novaQuantidade }]);
+    setNovoProduto('');
+    setNovaQuantidade('');
+  };
+
+  const removerProduto = (index) => {
+    setProdutos(produtos.filter((_, i) => i !== index));
+  };
+
+  return (
+    <View>
+      <TextInput
+        placeholder="Novo produto"
+        value={novoProduto}
+        onChangeText={setNovoProduto}
+      />
+      <TextInput
+        placeholder="Quantidade"
+        keyboardType="numeric"
+        value={novaQuantidade}
+        onChangeText={setNovaQuantidade}
+      />
+      <Button title="Adicionar" onPress={adicionarProduto} />
+
+      <FlatList
+        data={produtos}
+        renderItem={({ item, index }) => (
+          <View>
+            <Text>{item.nome} - {item.quantidade}</Text>
+            <Button title="Remover" onPress={() => removerProduto(index)} />
+          </View>
+        )}
+      />
+    </View>
+  );
+};
+
+export default EstoqueScreen;
