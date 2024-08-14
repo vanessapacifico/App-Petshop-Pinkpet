@@ -5,7 +5,7 @@ const PerfilScreen = () => {
   const [usuario, setUsuario] = useState({
     nome: 'João Silva',
     email: 'joaosilva@email.com',
-    telefone: '(11) 98765-4321',
+    telefone: '(83) 98765-4321',
     animais: [
       { nome: 'Rex', raca: 'Labrador', dataNascimento: '01/01/2020' },
       { nome: 'Nina', raca: 'Poodle', dataNascimento: '15/03/2022' },
